@@ -13,5 +13,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+  <div class="container-fluid" style="border: 1px solid black;">
+    <div class="row">
+      <main class="col-8 px-0">
+        <!-- image -->
+        <swiper-container appSwiper #swiper [config]="swiperConfig" thumbs-swiper=".mySwiper2" (swiperslidechange)="slideChange($event)" style="border: 1px solid black;">
+          <swiper-slide *ngFor="let item of contents" style="border: 1px solid red;" >
+        <img [src]='item.url'>
+
+          </swiper-slide>
+        </swiper-container>
+        <!-- /image -->
+      </main>
+
+      <!-- description -->
+      <aside>
+        <h3 [textContent]="contents[index].title"></h3>
+        <p [textContent]="contents[index].description"></p>
+      </aside>
+      <!-- /description -->
+
+    </div>
+  </div>
+
+
+
+
+
 </ion-content>
