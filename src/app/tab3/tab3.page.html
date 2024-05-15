@@ -7,11 +7,96 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+
+  <form [formGroup]="linksForm" (submit)="onSubmitForm()">
+
+    <ion-button [disabled]="disalbeAddLinks()" (click)="addLink()" fill="outline">ADD</ion-button>
+
+    <div formArrayName="links">
+      <ion-grid class="ion-no-padding">
+        <div *ngFor="let link of getLinksArray.controls; let i=index" [formGroupName]="i" lines="none">
+        <ion-row class="ion-padding-bottom">
+            <ion-col size="11" style="border: 1px solid black;">
+              <ion-input fill="outline" full placeholder="Link" formControlName="link">
+              </ion-input>
+            </ion-col>
+            <ion-col style="border-radius: 16%;" class="ion-align-self-center">
+                <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;  height: 25px; width: 25px; padding-left: 3px;"
+                  (click)="deleteLink(i)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </div>
+        </ion-grid>
+      <span *ngIf="linksForm.get('link')?.dirty && linksForm.get('link')?.errors">Handle not valid</span>
+    </div>
+    <ion-button size="small" type="submit">Submit</ion-button>
+
+    {{ linksForm.value | json }}
+
+  </form>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-start">
+          <h3>text-start</h3>
+          <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;"
+                (click)="deleteLink(1)"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-end">
+          <h3>text-end</h3>
+          <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;"
+                (click)="deleteLink(1)"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-center">
+          <h3>text-center</h3>
+          <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;"
+                (click)="deleteLink(1)"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-justify">
+          <h3>text-justify</h3>
+          <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;"
+                (click)="deleteLink(1)"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-wrap">
+          <h3>text-wrap</h3>
+          <ion-icon item-end color="danger" name="trash" style="border-radius: 16%;"
+                (click)="deleteLink(1)"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-nowrap">
+          <h3>text-nowrap</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- https://stackblitz.com/edit/ionic-reactive-form-array-add-group?file=pages%2Fhome%2Fhome.html -->
+
+
+
+
+
+
 </ion-content>

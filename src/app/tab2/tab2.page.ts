@@ -16,11 +16,6 @@ export class Tab2Page implements AfterViewInit {
 
   index = 0;
 
-  swiperConfig: SwiperOptions = {
-    spaceBetween: 10,
-    navigation: true,
-  }
-
 
   ngAfterViewInit() {
     this.swiper.nativeElement.swiper.activeIndex = this.index;

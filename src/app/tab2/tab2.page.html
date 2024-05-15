@@ -13,28 +13,42 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
-  <div class="container-fluid" style="border: 1px solid black;">
-    <div class="row">
-      <main class="col-8 px-0">
-        <!-- image -->
-        <swiper-container appSwiper #swiper [config]="swiperConfig" thumbs-swiper=".mySwiper2" (swiperslidechange)="slideChange($event)" style="border: 1px solid black;">
-          <swiper-slide *ngFor="let item of contents" style="border: 1px solid red;" >
-        <img [src]='item.url'>
 
-          </swiper-slide>
-        </swiper-container>
-        <!-- /image -->
-      </main>
 
-      <!-- description -->
-      <aside>
-        <h3 [textContent]="contents[index].title"></h3>
-        <p [textContent]="contents[index].description"></p>
-      </aside>
-      <!-- /description -->
+  <div>
+    <main>
+      <!-- image -->
+      <swiper-container #swiper slides-per-view="1" space-between="50" pagination="true" pagination-type="progressbar"
+        (swiperslidechange)="slideChange($event)" style="border: 1px solid black;">
 
-    </div>
+        <swiper-slide *ngFor="let item of contents" style="border: 1px solid red;" class="ion-padding">
+
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="6">
+                <div>index: {{index}}</div>
+                <img
+                  src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U">
+              </ion-col>
+              <ion-col size="3">
+                <div>2 of 2</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <img [src]='item.url'>
+          <ion-item *ngIf="index === 0" lines="none" style="border: 2px aquamarine;">
+            <ion-textarea placeholder="Type something here" [autoGrow]="true"
+              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus sem, auctor accumsan egestas sed, venenatis at ex. Nam consequat ex odio, suscipit rhoncus orci dictum eget. Aenean sit amet ligula varius felis facilisis lacinia nec volutpat nulla. Duis ullamcorper sit amet turpis sed blandit. Integer pretium massa eu faucibus interdum.">
+            </ion-textarea>
+          </ion-item>
+
+
+        </swiper-slide>
+
+      </swiper-container>
+      <!-- /image -->
+    </main>
   </div>
 
 
